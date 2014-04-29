@@ -17,4 +17,25 @@ describe "UserPages" do
         it { should have_selector('h1',    text: user.name) }
         it { should have_selector('title', text: user.name) }
     end
+
+    describe "signup" do
+ 
+        before { visit signup_path }
+
+        describe "with valid informatino" do
+
+            it "should vreate a user" do
+
+            end
+        end
+
+        describe "with invalid information" do
+            it "should not create a user" do
+                old_count = User.old_count
+                click_button "Create my account"
+                new_count = User.new_count
+                new_count.should == old_count
+            end
+        end
+
 end
